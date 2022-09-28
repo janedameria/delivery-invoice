@@ -4,6 +4,9 @@ import { useForm } from "react-hook-form";
 export const FormContext = createContext();
 
 const FormContextProvider = ({ children }) => {
+  const pages = ["DELIVERY", "PAYMENT", "FINISH"];
+  const [page, setPage] = useState(pages[0]);
+
   const {
     register,
     formState: { errors },
@@ -13,27 +16,19 @@ const FormContextProvider = ({ children }) => {
     mode: "onBlur",
   });
 
-  const [summaries, setSummaries] = useState([]);
-  // useEffect(() => {
-  //   if (watch("dropshipper")) {
-  //     const dropship = {
-  //       name: "Dropshipping Fee",
-  //       price: 5900,
-  //     };
-
-  //     setSummaries([...summaries, dropship]);
-  //   }
-  //   console.log("watch", watch());
-  //   console.log("summaries", summaries);
-  // }, [watch]);
+  const [shipment, setShipment] = useState({});
 
   return (
     <FormContext.Provider
       value={{
         register,
         errors,
+        page,
+        shipment,
+        setShipment,
+        setPage,
+        pages,
         handleSubmit,
-        summaries,
         watch,
       }}
     >

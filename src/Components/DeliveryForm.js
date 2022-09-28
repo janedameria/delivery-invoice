@@ -42,7 +42,7 @@ const Input = styled.input`
   }}
 `;
 
-const DeliveryForm = ({ onSubmit, register, handleSubmit, errors, watch }) => {
+const DeliveryForm = ({ register, errors, watch, handleSubmit, onSubmit }) => {
   const renderMode = (name) => {
     if (errors[name]) {
       return "error";
@@ -53,7 +53,7 @@ const DeliveryForm = ({ onSubmit, register, handleSubmit, errors, watch }) => {
 
   const isDropshipperChecked = watch("dropshipper");
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <Form id="deliveryform" onSubmit={handleSubmit(onSubmit)}>
       <InputContainer>
         <Input
           mode={renderMode("email")}

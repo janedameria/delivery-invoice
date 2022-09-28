@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import styled from "styled-components";
 import DeliveryForm from "../Components/DeliveryForm";
+import Summary from "../Components/Summary";
 import Title from "../Components/Title";
 import { FormContext } from "../Context/FormContext";
 
@@ -27,32 +28,35 @@ const TopContainer = styled.div`
 const Step1 = () => {
   const {
     isDropshipperChecked,
-    setIsDropshipperChecked,
     register,
+    setPage,
+    pages,
     errors,
     handleSubmit,
     watch,
   } = useContext(FormContext);
-  const onSubmit = (data) => console.log(data);
-
+  const onSubmit = () => setPage(pages[1]);
   return (
-    <SubContainer>
-      <TopContainer>
-        <Title text={"Delivery Details"} />
-        <label>
-          <input {...register("dropshipper")} type={"checkbox"} />
-          <span>Send as dropshipper</span>
-        </label>
-      </TopContainer>
-      <DeliveryForm
-        register={register}
-        handleSubmit={handleSubmit}
-        errors={errors}
-        onSubmit={onSubmit}
-        isDropshipperChecked={isDropshipperChecked}
-        watch={watch}
-      />
-    </SubContainer>
+    <>
+      <SubContainer>
+        <TopContainer>
+          <Title text={"Delivery Details"} />
+          <label>
+            <input {...register("dropshipper")} type={"checkbox"} />
+            <span>Send as dropshipper</span>
+          </label>
+        </TopContainer>
+        <DeliveryForm
+          register={register}
+          handleSubmit={handleSubmit}
+          errors={errors}
+          onSubmit={onSubmit}
+          isDropshipperChecked={isDropshipperChecked}
+          watch={watch}
+        />
+      </SubContainer>
+      <Summary textButton="Continue to Payment" formId={"deliveryform"} />
+    </>
   );
 };
 

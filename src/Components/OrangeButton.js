@@ -12,8 +12,12 @@ const Button = styled.button`
     cursor: pointer;
   }
 `;
-const OrangeButton = ({ text }) => {
-  return <Button>{text}</Button>;
+const OrangeButton = ({ text, form }) => {
+  return (
+    <Button type="submit" form={form}>
+      {text}
+    </Button>
+  );
 };
 
 export default OrangeButton;

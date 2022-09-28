@@ -43,17 +43,17 @@ const UL = styled.ul`
   }
 `;
 
-const BreadCrumb = ({ setPage, pages }) => {
+const BreadCrumb = () => {
   return (
     <Container>
       <UL>
         <li>
           <span>1.</span>
-          <a onClick={() => setPage(pages[0])}>Delivery</a>
+          <a>Delivery</a>
         </li>
         <li>
           <span>2.</span>
-          <a onClick={() => setPage(pages[1])}>Payment</a>
+          <a>Payment</a>
         </li>
         <li>
           <span>3.</span>

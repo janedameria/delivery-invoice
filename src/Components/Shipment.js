@@ -15,7 +15,7 @@ const Shipment = () => {
   return (
     <Container>
       {shipmentList.map((value) => (
-        <RadioInput registerName={"shipments"} key={value.name} value={value} />
+        <RadioInput registerName={"shipment"} key={value.name} value={value} />
       ))}
     </Container>
   );

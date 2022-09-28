@@ -41,8 +41,9 @@ const BodyContainer = styled.div`
   flex-direction: column;
   gap: 0.7rem;
 `;
-const Summary = ({ textButton = "" }) => {
-  const { watch } = useContext(FormContext);
+const Summary = ({ textButton = "", formId }) => {
+  const [btnText, setBtnText] = useState(textButton);
+  const { watch, shipment, setShipment } = useContext(FormContext);
   const goodsTotal = {
     name: "Costs of goods",
     value: 500000,
@@ -63,6 +64,13 @@ const Summary = ({ textButton = "" }) => {
     }
     return setTotal(t);
   }, [isDropshipperChecked]);
+
+  useEffect(() => {
+    const value = watch("payment");
+    if (value && value.length > 0) {
+      setBtnText(`Pay with ${value}`);
+    }
+  }, [watch("payment")]);
 
   return (
     <SummaryContainer>
@@ -85,7 +93,7 @@ const Summary = ({ textButton = "" }) => {
         <BigParagraph>
           Total: <span>{total}</span>
         </BigParagraph>
-        <OrangeButton text={textButton} />
+        <OrangeButton text={btnText} form={formId} />
       </BodyContainer>
     </SummaryContainer>
   );

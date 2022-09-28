@@ -1,5 +1,6 @@
 import Home from "./Home";
 import styled from "styled-components";
+import FormContextProvider from "./Context/FormContext";
 
 const Container = styled.div`
   background-color: #fffae6;
@@ -12,9 +13,11 @@ const Container = styled.div`
 
 function App() {
   return (
-    <Container>
-      <Home />
-    </Container>
+    <FormContextProvider>
+      <Container>
+        <Home />
+      </Container>
+    </FormContextProvider>
   );
 }
 

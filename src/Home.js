@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import BreadCrumb from "./Components/BreadCrumb";
-import Summary from "./Components/Summary";
 import Step1 from "./Pages/Step1";
 import Step2 from "./Pages/Step2";
-import FormContextProvider from "./Context/FormContext";
+import { FormContext } from "./Context/FormContext";
+import Step3 from "./Pages/Step3";
 
 const Container = styled.div`
   background-color: #fff;
@@ -13,8 +13,7 @@ const Container = styled.div`
 `;
 
 const Home = () => {
-  const pages = ["DELIVERY", "PAYMENT", "FINISH"];
-  const [page, setPage] = useState(pages[0]);
+  const { page } = useContext(FormContext);
   const renderPage = () => {
     if (page == "DELIVERY") {
       return <Step1 />;
@@ -22,24 +21,16 @@ const Home = () => {
     if (page == "PAYMENT") {
       return <Step2 />;
     }
+    if (page == "FINISH") {
+      return <Step3 />;
+    }
   };
 
-  const renderSummary = () => {
-    if (page == "DELIVERY") {
-      return <Summary textButton="Continue to Payment" />;
-    }
-    if (page == "PAYMENT") {
-      return <Summary textButton="Pay With E-Wallet" />;
-    }
-  };
   return (
-    <FormContextProvider>
-      <Container>
-        <BreadCrumb setPage={setPage} pages={pages} />
-        {renderPage()}
-        {renderSummary()}
-      </Container>
-    </FormContextProvider>
+    <Container>
+      <BreadCrumb />
+      {renderPage()}
+    </Container>
   );
 };
 
