@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { goodsTotal, dropshipTotal } from "../Constant/Invoice";
 
 export const FormContext = createContext();
 
@@ -15,8 +16,16 @@ const FormContextProvider = ({ children }) => {
   } = useForm({
     mode: "onBlur",
   });
+  const [total, setTotal] = useState(0);
 
-  const [shipment, setShipment] = useState({});
+  // useEffect(() => {
+  //   const isChecked = watch("dropshipper");
+  //   const t = goodsTotal.price;
+  //   if (isChecked) {
+  //     return setTotal(t + dropshipTotal.price);
+  //   }
+  //   return setTotal(t);
+  // }, [watch("dropshipper")]);
 
   return (
     <FormContext.Provider
@@ -24,9 +33,9 @@ const FormContextProvider = ({ children }) => {
         register,
         errors,
         page,
-        shipment,
-        setShipment,
         setPage,
+        total,
+        setTotal,
         pages,
         handleSubmit,
         watch,

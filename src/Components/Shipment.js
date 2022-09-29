@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import RadioInput from "./RadioInput";
+import { shipmentList } from "../Constant/Invoice";
 
 const Container = styled.div`
   display: flex;
@@ -7,11 +8,6 @@ const Container = styled.div`
 `;
 
 const Shipment = () => {
-  const shipmentList = [
-    { name: "GO-SEND", price: 15000 },
-    { name: "JNE", price: 9000 },
-    { name: "Personal Courier", price: 29000 },
-  ];
   return (
     <Container>
       {shipmentList.map((value) => (

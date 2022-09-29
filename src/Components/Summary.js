@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import styled from "styled-components";
 import OrangeButton from "../Components/OrangeButton";
 import Title from "./Title";
+import { goodsTotal, dropshipTotal, shipmentList } from "../Constant/Invoice";
 import { FormContext } from "../Context/FormContext";
 
 const SummaryContainer = styled.div`
@@ -45,27 +46,29 @@ const BodyContainer = styled.div`
 `;
 const Summary = ({ textButton = "", formId }) => {
   const [btnText, setBtnText] = useState(textButton);
-  const { watch, shipment, setShipment } = useContext(FormContext);
-  const goodsTotal = {
-    name: "Costs of goods",
-    value: 500000,
-  };
-  const dropshipTotal = {
-    name: "Dropshipping Fee",
-    value: 5900,
-  };
-
+  const { watch } = useContext(FormContext);
   const [total, setTotal] = useState(0);
-
   const isDropshipperChecked = watch("dropshipper");
+  const [shipmentValue, setShipmentValue] = useState();
 
   useEffect(() => {
-    const t = goodsTotal.value;
+    const t = goodsTotal.price;
     if (isDropshipperChecked) {
-      return setTotal(t + dropshipTotal.value);
+      return setTotal(t + dropshipTotal.price);
     }
     return setTotal(t);
   }, [isDropshipperChecked]);
+
+  useEffect(() => {
+    const value = watch("shipment");
+    const res = shipmentList.find((v) => v.name == value);
+    if (res) {
+      const t = shipmentValue ? total - shipmentValue.price : total;
+
+      setShipmentValue(res);
+      return setTotal(t + res.price);
+    }
+  }, [watch("shipment")]);
 
   useEffect(() => {
     const value = watch("payment");
@@ -84,12 +87,19 @@ const Summary = ({ textButton = "", formId }) => {
       <BodyContainer>
         <Paragraph>
           {goodsTotal.name}
-          <Span>{goodsTotal.value}</Span>
+          <Span>{goodsTotal.price}</Span>
         </Paragraph>
         {isDropshipperChecked && (
           <Paragraph>
             {dropshipTotal.name}
-            <Span>{dropshipTotal.value}</Span>
+            <Span>{dropshipTotal.price}</Span>
+          </Paragraph>
+        )}
+
+        {shipmentValue && (
+          <Paragraph>
+            {shipmentValue.name}
+            <Span>{shipmentValue.price}</Span>
           </Paragraph>
         )}
         <BigParagraph>
