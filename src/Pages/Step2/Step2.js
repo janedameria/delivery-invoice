@@ -5,10 +5,10 @@ import Payment from "../../Components/Payment/Payment";
 import Summary from "../../Components/Summary/Summary";
 import BackButton from "../../Components/BackButton/BackButton";
 import { FormContext } from "../../Context/FormContext";
-import { SubContainer, Container } from "./Styles";
+import { SubContainer, Container, ErrorMessage } from "./Styles";
 
 const Step2 = () => {
-  const { setPage, pages, handleSubmit } = useContext(FormContext);
+  const { setPage, pages, handleSubmit, errors } = useContext(FormContext);
   const onSubmit = () => setPage(pages[2]);
 
   return (
@@ -19,10 +19,12 @@ const Step2 = () => {
           <SubContainer>
             <Title text={"Shipment"} />
             <Shipment />
+            {errors.shipment && <ErrorMessage>This is required</ErrorMessage>}
           </SubContainer>
           <SubContainer>
             <Title text={"Payment"} />
             <Payment />
+            {errors.payment && <ErrorMessage>This is required</ErrorMessage>}
           </SubContainer>
         </form>
       </Container>

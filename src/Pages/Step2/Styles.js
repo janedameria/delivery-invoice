@@ -7,6 +7,11 @@ export const Container = styled.div`
   justify-content: space-around;
 `;
 
+export const ErrorMessage = styled.span`
+  color: #ff8a00;
+  font-size: 0.8rem;
+`;
+
 export const SubContainer = styled.div`
   margin: 1rem;
   display: flex;

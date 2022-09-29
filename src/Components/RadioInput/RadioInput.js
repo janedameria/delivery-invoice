@@ -8,7 +8,9 @@ const RadioInput = ({ registerName, value }) => {
   return (
     <>
       <RadioInputStyled
-        {...register(registerName, { required: true })}
+        {...register(registerName, {
+          required: true,
+        })}
         type="radio"
         id={value.name}
         value={value.name}
