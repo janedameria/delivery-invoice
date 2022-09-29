@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Input, InputContainer, Form } from "./Styles";
 
 const DeliveryForm = ({
@@ -19,6 +19,17 @@ const DeliveryForm = ({
   };
 
   const isDropshipperChecked = watch("dropshipper");
+  const [charCount, setCharCount] = useState(120);
+
+  useEffect(() => {
+    const value = watch("deliveryAddress");
+    if (value) {
+      return setCharCount(120 - value.length);
+    }
+
+    return setCharCount(120);
+  }, [watch("deliveryAddress")]);
+
   useEffect(() => {
     if (!isDropshipperChecked) {
       setValue("dropshipperName", "");
@@ -80,6 +91,7 @@ const DeliveryForm = ({
           {...register("deliveryAddress", { required: true, maxLength: 120 })}
           placeholder={"Delivery Address"}
         />
+        <span>{charCount} character(s) left</span>
       </InputContainer>
     </Form>
   );
