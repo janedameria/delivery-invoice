@@ -5,13 +5,15 @@ import Title from "./Title";
 import { FormContext } from "../Context/FormContext";
 
 const SummaryContainer = styled.div`
-  border-left: 1px solid #ffd29d;
   padding: 1rem 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-width: 40%;
   margin-top: 2rem;
+  @media (max-width: 768px) {
+    min-height: 80vh;
+  }
 `;
 
 const Paragraph = styled.p`

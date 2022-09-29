@@ -11,6 +11,7 @@ const SubContainer = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  min-width: 50%;
 `;
 
 const TopContainer = styled.div`
@@ -22,6 +23,14 @@ const TopContainer = styled.div`
   span {
     font-size: 0.9rem;
     margin-left: 10px;
+  }
+`;
+
+const Container = styled.div`
+  display: flex;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
   }
 `;
 
@@ -37,7 +46,7 @@ const Step1 = () => {
   } = useContext(FormContext);
   const onSubmit = () => setPage(pages[1]);
   return (
-    <>
+    <Container>
       <SubContainer>
         <TopContainer>
           <Title text={"Delivery Details"} />
@@ -56,7 +65,7 @@ const Step1 = () => {
         />
       </SubContainer>
       <Summary textButton="Continue to Payment" formId={"deliveryform"} />
-    </>
+    </Container>
   );
 };
 
