@@ -18,6 +18,7 @@ const Step3 = () => {
 
   const handleBackOnClick = () => {
     reset();
+    window.localStorage.removeItem("formValue");
     setPage(pages[0]);
   };
   const randomString = () => {
