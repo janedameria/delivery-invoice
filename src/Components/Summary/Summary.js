@@ -34,7 +34,7 @@ const Summary = ({ textButton = "", formId }) => {
 
   useEffect(() => {
     const value = watch("shipment");
-    const res = shipmentList.find((v) => v.name == value);
+    const res = shipmentList.find((v) => v.name === value);
     if (res) {
       const t = shipmentValue ? total - shipmentValue.price : total;
 
@@ -44,7 +44,7 @@ const Summary = ({ textButton = "", formId }) => {
   }, [watch("shipment")]);
 
   useEffect(() => {
-    if (page == "FINISH") {
+    if (page === "FINISH") {
       setIsShowBtn(false);
       setPaymentValue(watch("payment"));
     }
