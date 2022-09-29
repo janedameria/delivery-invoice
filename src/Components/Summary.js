@@ -22,13 +22,14 @@ const Paragraph = styled.p`
   width: 100%;
   color: #a8a8a8;
   display: flex;
+  flex-direction: ${(props) => props.column && "column"};
   justify-content: space-between;
 `;
 
 const Span = styled.span`
   font-size: 0.9rem;
   font-weight: bold;
-  color: #000;
+  color: ${(props) => (props.green ? "#1BD97B" : " #000")};
 `;
 
 const BigParagraph = styled.p`
@@ -37,6 +38,12 @@ const BigParagraph = styled.p`
   font-weight: bold;
   display: flex;
   justify-content: space-between;
+`;
+
+const TopContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 `;
 
 const BodyContainer = styled.div`
@@ -79,11 +86,19 @@ const Summary = ({ textButton = "", formId }) => {
 
   return (
     <SummaryContainer>
-      <div className="">
+      <TopContainer>
         <Title text={"Summary"} />
 
         <Paragraph>10 items purchased</Paragraph>
-      </div>
+        {shipmentValue && (
+          <Paragraph column>
+            Delivery Estimation
+            <Span green>
+              {shipmentValue.days} by {shipmentValue.name}
+            </Span>
+          </Paragraph>
+        )}
+      </TopContainer>
       <BodyContainer>
         <Paragraph>
           {goodsTotal.name}
