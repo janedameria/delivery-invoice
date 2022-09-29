@@ -35,14 +35,16 @@ const Step2 = () => {
     <>
       <BackButton text={"Back to Delivery"} onClick={() => setPage(pages[0])} />
       <Container>
-        <SubContainer>
-          <Title text={"Shipment"} />
-          <Shipment />
-        </SubContainer>
-        <SubContainer>
-          <Title text={"Payment"} />
-          <Payment />
-        </SubContainer>
+        <form id="payment-shipment-form" onSubmit={handleSubmit(onSubmit)}>
+          <SubContainer>
+            <Title text={"Shipment"} />
+            <Shipment />
+          </SubContainer>
+          <SubContainer>
+            <Title text={"Payment"} />
+            <Payment />
+          </SubContainer>
+        </form>
       </Container>
       <Summary
         textButton="Continue to Payment"

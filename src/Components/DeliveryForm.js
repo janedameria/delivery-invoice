@@ -1,6 +1,4 @@
 import styled, { css } from "styled-components";
-import { useContext } from "react";
-import { FormContext } from "../Context/FormContext";
 
 const Form = styled.form`
   display: flex;
