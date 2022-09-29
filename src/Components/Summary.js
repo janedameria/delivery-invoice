@@ -53,10 +53,11 @@ const BodyContainer = styled.div`
 `;
 const Summary = ({ textButton = "", formId }) => {
   const [btnText, setBtnText] = useState(textButton);
-  const { watch } = useContext(FormContext);
-  const [total, setTotal] = useState(0);
+  const { watch, page, total, setTotal } = useContext(FormContext);
   const isDropshipperChecked = watch("dropshipper");
   const [shipmentValue, setShipmentValue] = useState();
+  const [paymentValue, setPaymentValue] = useState();
+  const [isShowBtn, setIsShowBtn] = useState(true);
 
   useEffect(() => {
     const t = goodsTotal.price;
@@ -76,6 +77,13 @@ const Summary = ({ textButton = "", formId }) => {
       return setTotal(t + res.price);
     }
   }, [watch("shipment")]);
+
+  useEffect(() => {
+    if (page == "FINISH") {
+      setIsShowBtn(false);
+      setPaymentValue(watch("payment"));
+    }
+  }, [page]);
 
   useEffect(() => {
     const value = watch("payment");
@@ -98,6 +106,13 @@ const Summary = ({ textButton = "", formId }) => {
             </Span>
           </Paragraph>
         )}
+
+        {paymentValue && (
+          <Paragraph column>
+            Payment Method
+            <Span green>{paymentValue}</Span>
+          </Paragraph>
+        )}
       </TopContainer>
       <BodyContainer>
         <Paragraph>
@@ -117,10 +132,11 @@ const Summary = ({ textButton = "", formId }) => {
             <Span>{shipmentValue.price}</Span>
           </Paragraph>
         )}
+
         <BigParagraph>
           Total: <span>{total}</span>
         </BigParagraph>
-        <OrangeButton text={btnText} form={formId} />
+        {isShowBtn && <OrangeButton text={btnText} form={formId} />}
       </BodyContainer>
     </SummaryContainer>
   );

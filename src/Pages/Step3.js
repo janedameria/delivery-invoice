@@ -19,7 +19,7 @@ const SubContainer = styled.div`
   gap: 1rem;
 `;
 const Step3 = () => {
-  const { setPage, pages, watch } = useContext(FormContext);
+  const { setPage, pages, watch, reset } = useContext(FormContext);
   const [shipment, setShipment] = useState();
 
   useEffect(() => {
@@ -29,6 +29,7 @@ const Step3 = () => {
   }, []);
 
   const handleBackOnClick = () => {
+    reset();
     setPage(pages[0]);
   };
   const randomString = () => {

@@ -1,5 +1,5 @@
+import { useEffect } from "react";
 import styled, { css } from "styled-components";
-
 const Form = styled.form`
   display: flex;
   flex-wrap: wrap;
@@ -18,29 +18,37 @@ const InputContainer = styled.div`
 `;
 const Input = styled.input`
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   height: ${(props) => props.big && "120px"};
 
   ${(props) => {
     switch (props.mode) {
       case "error":
         return css`
-          border: 1px solid #ff8a00;
+          border: 2px solid #ff8a00;
         `;
       case "success":
         return css`
-          border: 1px solid #1bd97b;
+          border: 2px solid #1bd97b;
         `;
 
       default:
         return css`
-          border: 1px solid #ccc;
+          border: 2px solid #ccc;
         `;
     }
   }}
 `;
 
-const DeliveryForm = ({ register, errors, watch, handleSubmit, onSubmit }) => {
+const DeliveryForm = ({
+  register,
+  errors,
+  watch,
+  handleSubmit,
+  onSubmit,
+  setValue,
+  clearErrors,
+}) => {
   const renderMode = (name) => {
     if (errors[name]) {
       return "error";
@@ -50,6 +58,14 @@ const DeliveryForm = ({ register, errors, watch, handleSubmit, onSubmit }) => {
   };
 
   const isDropshipperChecked = watch("dropshipper");
+  useEffect(() => {
+    if (!isDropshipperChecked) {
+      setValue("dropshipperName", "");
+      setValue("dropshipperPhoneNumber", "");
+      clearErrors("dropshipperName");
+      clearErrors("dropshipperPhoneNumber");
+    }
+  }, [isDropshipperChecked]);
   return (
     <Form id="deliveryform" onSubmit={handleSubmit(onSubmit)}>
       <InputContainer>

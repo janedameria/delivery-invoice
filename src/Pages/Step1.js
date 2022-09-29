@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import styled from "styled-components";
 import DeliveryForm from "../Components/DeliveryForm";
 import Summary from "../Components/Summary";
@@ -40,11 +40,14 @@ const Step1 = () => {
     register,
     setPage,
     pages,
+    setValue,
+    clearErrors,
     errors,
     handleSubmit,
     watch,
   } = useContext(FormContext);
   const onSubmit = () => setPage(pages[1]);
+
   return (
     <Container>
       <SubContainer>
@@ -60,6 +63,8 @@ const Step1 = () => {
           handleSubmit={handleSubmit}
           errors={errors}
           onSubmit={onSubmit}
+          setValue={setValue}
+          clearErrors={clearErrors}
           isDropshipperChecked={isDropshipperChecked}
           watch={watch}
         />
