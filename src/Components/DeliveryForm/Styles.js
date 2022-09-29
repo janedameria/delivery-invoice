@@ -4,11 +4,13 @@ export const Form = styled.form`
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  justify-content: space-between;
+  align-items: center;
   margin: 1rem 0;
 `;
 
 export const InputContainer = styled.div`
-  width: 40%;
+  min-width: 45%;
   display: flex;
   flex-direction: column;
 
