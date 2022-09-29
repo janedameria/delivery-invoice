@@ -14,24 +14,33 @@ const Container = styled.div`
 
 const Home = () => {
   const { page } = useContext(FormContext);
-  const renderPage = () => {
-    if (page == "DELIVERY") {
-      return <Step1 />;
-    }
-    if (page == "PAYMENT") {
-      return <Step2 />;
-    }
-    if (page == "FINISH") {
-      return <Step3 />;
-    }
-  };
-
-  return (
-    <Container>
-      <BreadCrumb />
-      {renderPage()}
-    </Container>
-  );
+  if (page == "DELIVERY") {
+    const activeLinks = [1];
+    return (
+      <Container>
+        <BreadCrumb activeLinks={activeLinks} />
+        <Step1 />
+      </Container>
+    );
+  }
+  if (page == "PAYMENT") {
+    const activeLinks = [1, 2];
+    return (
+      <Container>
+        <BreadCrumb activeLinks={activeLinks} />
+        <Step2 />
+      </Container>
+    );
+  }
+  if (page == "FINISH") {
+    const activeLinks = [1, 2, 3];
+    return (
+      <Container>
+        <BreadCrumb activeLinks={activeLinks} />
+        <Step3 />
+      </Container>
+    );
+  }
 };
 
 export default Home;
