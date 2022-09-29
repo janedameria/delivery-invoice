@@ -15,9 +15,13 @@ const Step1 = () => {
     clearErrors,
     errors,
     handleSubmit,
+    setFormValue,
     watch,
   } = useContext(FormContext);
-  const onSubmit = () => setPage(pages[1]);
+  const onSubmit = () => {
+    setFormValue(watch());
+    setPage(pages[1]);
+  };
 
   return (
     <Container>
