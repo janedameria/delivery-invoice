@@ -1,8 +1,5 @@
-import styled from "styled-components";
+import { TitleStyled } from "./Styles";
 
-const TitleStyled = styled.h1`
-  color: #ff8a00;
-`;
 const Title = ({ text }) => {
   return <TitleStyled>{text}</TitleStyled>;
 };

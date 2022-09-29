@@ -1,38 +1,9 @@
 import { useContext, useEffect } from "react";
-import styled from "styled-components";
-import DeliveryForm from "../Components/DeliveryForm";
-import Summary from "../Components/Summary";
-import Title from "../Components/Title";
-import { FormContext } from "../Context/FormContext";
-
-const SubContainer = styled.div`
-  margin: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  min-width: 50%;
-`;
-
-const TopContainer = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  span {
-    font-size: 0.9rem;
-    margin-left: 10px;
-  }
-`;
-
-const Container = styled.div`
-  display: flex;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
-`;
+import DeliveryForm from "../../Components/DeliveryForm/DeliveryForm";
+import Summary from "../../Components/Summary/Summary";
+import Title from "../../Components/Title/Title";
+import { FormContext } from "../../Context/FormContext";
+import { Container, SubContainer, TopContainer } from "./Styles";
 
 const Step1 = () => {
   const {

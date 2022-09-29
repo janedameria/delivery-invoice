@@ -1,23 +1,11 @@
 import { useContext, useState, useEffect } from "react";
-import styled from "styled-components";
-import BackButton from "../Components/BackButton";
-import Title from "../Components/Title";
-import { FormContext } from "../Context/FormContext";
-import Summary from "../Components/Summary";
-import { shipmentList } from "../Constant/Invoice";
+import BackButton from "../../Components/BackButton/BackButton";
+import Title from "../../Components/Title/Title";
+import { FormContext } from "../../Context/FormContext";
+import Summary from "../../Components/Summary/Summary";
+import { shipmentList } from "../../Constant/Invoice";
+import { SubContainer, Container } from "../Step2/Styles";
 
-const Container = styled.div`
-  display: flex;
-  width: 100%;
-`;
-const SubContainer = styled.div`
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-`;
 const Step3 = () => {
   const { setPage, pages, watch, reset } = useContext(FormContext);
   const [shipment, setShipment] = useState();

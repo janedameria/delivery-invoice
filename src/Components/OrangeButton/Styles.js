@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Button = styled.button`
+export const Button = styled.button`
   background-color: #ff8a00;
   color: #fff;
   border: none;
@@ -12,12 +12,3 @@ const Button = styled.button`
     cursor: pointer;
   }
 `;
-const OrangeButton = ({ text, form }) => {
-  return (
-    <Button type="submit" form={form}>
-      {text}
-    </Button>
-  );
-};
-
-export default OrangeButton;

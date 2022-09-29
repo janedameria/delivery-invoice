@@ -1,31 +1,11 @@
 import { useContext } from "react";
-import styled from "styled-components";
-import Title from "../Components/Title";
-import Shipment from "../Components/Shipment";
-import Payment from "../Components/Payment";
-import Summary from "../Components/Summary";
-import BackButton from "../Components/BackButton";
-import { FormContext } from "../Context/FormContext";
-
-const Container = styled.div`
-  background-color: #fff;
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  justify-content: space-around;
-`;
-
-const SubContainer = styled.div`
-  margin: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  min-width: 60%;
-  > * {
-    padding: 1rem;
-  }
-`;
+import Title from "../../Components/Title/Title";
+import Shipment from "../../Components/Shipment/Shipment";
+import Payment from "../../Components/Payment/Payment";
+import Summary from "../../Components/Summary/Summary";
+import BackButton from "../../Components/BackButton/BackButton";
+import { FormContext } from "../../Context/FormContext";
+import { SubContainer, Container } from "./Styles";
 
 const Step2 = () => {
   const { setPage, pages, handleSubmit } = useContext(FormContext);

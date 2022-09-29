@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Container = styled.div`
+export const Container = styled.div`
   background-color: #fffae6;
   width: 50%;
   padding-bottom: 0.8rem;
@@ -15,7 +15,7 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-const UL = styled.ul`
+export const UL = styled.ul`
   list-style: none;
   display: flex;
 
@@ -36,10 +36,6 @@ const UL = styled.ul`
     text-decoration: none;
     color: inherit;
     margin-left: 0.5rem;
-    &:hover {
-      color: #ff8a00;
-      cursor: pointer;
-    }
   }
   @media (max-width: 1024px) {
     li {
@@ -52,26 +48,3 @@ const UL = styled.ul`
     }
   }
 `;
-
-const BreadCrumb = () => {
-  return (
-    <Container>
-      <UL>
-        <li>
-          <span>1.</span>
-          <a>Delivery</a>
-        </li>
-        <li>
-          <span>2.</span>
-          <a>Payment</a>
-        </li>
-        <li>
-          <span>3.</span>
-          <a href="#">Finish</a>
-        </li>
-      </UL>
-    </Container>
-  );
-};
-
-export default BreadCrumb;

@@ -1,10 +1,5 @@
-import styled from "styled-components";
-import RadioInput from "./RadioInput";
-
-const Container = styled.div`
-  display: flex;
-  gap: 2rem;
-`;
+import RadioInput from "../RadioInput/RadioInput";
+import { Container } from "./Styles";
 
 const Payment = () => {
   const shipmentList = [

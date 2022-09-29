@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import styled from "styled-components";
-import BreadCrumb from "./Components/BreadCrumb";
-import Step1 from "./Pages/Step1";
-import Step2 from "./Pages/Step2";
+import BreadCrumb from "./Components/BreadCrumb/BreadCrumb";
+import Step1 from "./Pages/Step1/Step1";
+import Step2 from "./Pages/Step2/Step2";
 import { FormContext } from "./Context/FormContext";
-import Step3 from "./Pages/Step3";
+import Step3 from "./Pages/Step3/Step3";
 
 const Container = styled.div`
   background-color: #fff;
